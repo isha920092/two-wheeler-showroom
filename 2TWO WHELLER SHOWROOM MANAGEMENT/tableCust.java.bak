@@ -1,0 +1,66 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+
+
+public class tableCust extends JFrame
+{
+	JButton ok,can;
+	JPanel pan;
+	JTable table;
+	Vector v1,v2,Vect;
+	Connection con = null;
+	Statement stat = null;
+	JScrollPane jsp;
+	public tableCust()
+	{
+		pan = new JPanel();
+		pan.setLayout(new BorderLayout());
+		v2 = new Vector();
+		Vect = new Vector();
+		v2.add("Customer No.");
+		v2.add("Customer Name");
+		v2.add("Address");
+		v2.add("City");
+		v2.add("Phone");
+		v2.add("E-mail");
+		try 
+		{
+			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+			con = DriverManager.getConnection("Jdbc:Odbc:sachin");
+			System.out.println ("Got Connection:"+con);
+			stat = con.createStatement();
+			ResultSet rs = stat.executeQuery("select * from cust order by custid");
+			while(rs.next())
+			{
+				v1 = new Vector();
+				v1.add(""+rs.getInt(1));
+				v1.add(rs.getString(2));
+				v1.add(rs.getString(3));
+				v1.add(""+rs.getInt(4))
+				v1.add(""+rs.getInt(5))
+				v1.add(rs.getString(8))
+				Vect.add(v1);
+			}
+			
+	    }
+	    catch (Exception ex) 
+	    {
+	    	System.out.println ("Exception Generated:"+ex);
+	    }
+	    table = new JTable(Vect,v2);
+	    jsp = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	    pan.add(jsp,BorderLayout.CENTER);
+	    getContentPane().add(pan);
+		this.setSize(550,500);
+		this.setTitle("Customer Report");
+		this.setVisible(true);
+	}
+	public static void main(String args[])
+	{
+		new tableCust();
+	}
+}

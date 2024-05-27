@@ -1,0 +1,143 @@
+#
+# An unexpected error has been detected by HotSpot Virtual Machine:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00a78980, pid=1356, tid=1232
+#
+# Java VM: Java HotSpot(TM) Client VM (1.5.0-b64 mixed mode, sharing)
+# Problematic frame:
+# J  java.util.HashMap.maskNull(Ljava/lang/Object;)Ljava/lang/Object;
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00235fe0):  JavaThread "main" [_thread_in_Java, id=1232]
+
+siginfo: ExceptionCode=0xc0000005, writing address 0x0106c4cc
+
+Registers:
+EAX=0x2b2db1e0, EBX=0x2b2db1e0, ECX=0x2b2dbc10, EDX=0x00a789c2
+ESP=0x0006f4cc, EBP=0x0006f4dc, ESI=0x00000000, EDI=0x0006f528
+EIP=0x00a78980, EFLAGS=0x00010a13
+
+Top of Stack: (sp=0x0006f4cc)
+0x0006f4cc:   00a5ffc0 00000000 2b2cf5b8 00000000
+0x0006f4dc:   0006f504 00a029fa 22aca661 0006f4e8
+0x0006f4ec:   2aac7459 0006f528 2b2dbc10 00000000
+0x0006f4fc:   2b2db410 0006f520 0006f598 00a9edcc
+0x0006f50c:   00000000 00000000 00000000 00000000
+0x0006f51c:   00000000 22aca630 22aca6d8 22aca2d0
+0x0006f52c:   22aca3d8 22aca630 002365c8 22aca3d8
+0x0006f53c:   00000084 00235fe0 00000084 0006f56c 
+
+Instructions: (pc=0x00a78980)
+0x00a78970:   00 00 00 00 10 10 0c 10 15 c0 0c 60 00 00 00 00
+0x00a78980:   89 84 24 00 d0 ff ff 55 8b ec 83 ec 10 8b 7d 08 
+
+
+Stack: [0x00030000,0x00070000),  sp=0x0006f4cc,  free space=253k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J  java.util.HashMap.maskNull(Ljava/lang/Object;)Ljava/lang/Object;
+j  java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+1
+J  java.util.jar.Attributes.read(Ljava/util/jar/Manifest$FastInputStream;[B)V
+j  java.util.jar.Manifest.read(Ljava/io/InputStream;)V+21
+j  java.util.jar.Manifest.<init>(Ljava/io/InputStream;)V+28
+j  java.util.jar.JarFile.getManifest()Ljava/util/jar/Manifest;+42
+j  com.sun.tools.javac.util.Paths$Path.addJarClassPath(Ljava/lang/String;Z)V+24
+j  com.sun.tools.javac.util.Paths$Path.addFile(Ljava/lang/String;Z)V+76
+j  com.sun.tools.javac.util.Paths$Path.addFiles(Ljava/lang/String;Z)Lcom/sun/tools/javac/util/Paths$Path;+44
+j  com.sun.tools.javac.util.Paths$Path.addFiles(Ljava/lang/String;)Lcom/sun/tools/javac/util/Paths$Path;+9
+j  com.sun.tools.javac.util.Paths.computeUserClassPath()Lcom/sun/tools/javac/util/Paths$Path;+66
+j  com.sun.tools.javac.util.Paths.lazy()V+30
+j  com.sun.tools.javac.util.Paths.bootClassPath()Ljava/util/Collection;+1
+j  com.sun.tools.javac.jvm.ClassReader.fillIn(Lcom/sun/tools/javac/code/Symbol$PackageSymbol;)V+53
+j  com.sun.tools.javac.jvm.ClassReader.complete(Lcom/sun/tools/javac/code/Symbol;)V+56
+j  com.sun.tools.javac.code.Symbol.complete()V+19
+j  com.sun.tools.javac.comp.Enter.visitTopLevel(Lcom/sun/tools/javac/tree/Tree$TopLevel;)V+132
+j  com.sun.tools.javac.tree.Tree$TopLevel.accept(Lcom/sun/tools/javac/tree/Tree$Visitor;)V+2
+j  com.sun.tools.javac.comp.Enter.classEnter(Lcom/sun/tools/javac/tree/Tree;Lcom/sun/tools/javac/comp/Env;)Lcom/sun/tools/javac/code/Type;+12
+j  com.sun.tools.javac.comp.Enter.classEnter(Lcom/sun/tools/javac/util/List;Lcom/sun/tools/javac/comp/Env;)Lcom/sun/tools/javac/util/List;+30
+j  com.sun.tools.javac.comp.Enter.complete(Lcom/sun/tools/javac/util/List;Lcom/sun/tools/javac/code/Symbol$ClassSymbol;)V+36
+j  com.sun.tools.javac.comp.Enter.main(Lcom/sun/tools/javac/util/List;)V+3
+j  com.sun.tools.javac.main.JavaCompiler.compile(Lcom/sun/tools/javac/util/List;)Lcom/sun/tools/javac/util/List;+109
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;Lcom/sun/tools/javac/util/Context;)I+350
+j  com.sun.tools.javac.main.Main.compile([Ljava/lang/String;)I+9
+j  com.sun.tools.javac.Main.compile([Ljava/lang/String;)I+12
+j  com.sun.tools.javac.Main.main([Ljava/lang/String;)V+102
+v  ~StubRoutines::call_stub
+V  [jvm.dll+0x8168d]
+V  [jvm.dll+0xd4179]
+V  [jvm.dll+0x8155e]
+V  [jvm.dll+0x8844c]
+C  [javac.exe+0x14d0]
+C  [javac.exe+0x66dd]
+C  [KERNEL32.DLL+0x87f5]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0099cc50 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=596]
+  0x0099b758 JavaThread "CompilerThread0" daemon [_thread_blocked, id=860]
+  0x0099a990 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=1128]
+  0x00997e08 JavaThread "Finalizer" daemon [_thread_blocked, id=1208]
+  0x009968f0 JavaThread "Reference Handler" daemon [_thread_blocked, id=1368]
+=>0x00235fe0 JavaThread "main" [_thread_in_Java, id=1232]
+
+Other Threads:
+  0x00994068 VMThread [id=1224]
+  0x009b7b48 WatcherThread [id=780]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 576K, used 244K [0x22aa0000, 0x22b40000, 0x22f80000)
+  eden space 512K,  35% used [0x22aa0000, 0x22acd010, 0x22b20000)
+  from space 64K,  99% used [0x22b20000, 0x22b2fff8, 0x22b30000)
+  to   space 64K,   0% used [0x22b30000, 0x22b30000, 0x22b40000)
+ tenured generation   total 7552K, used 742K [0x22f80000, 0x236e0000, 0x26aa0000)
+   the space 7552K,   9% used [0x22f80000, 0x23039900, 0x23039a00, 0x236e0000)
+ compacting perm gen  total 8192K, used 1244K [0x26aa0000, 0x272a0000, 0x2aaa0000)
+   the space 8192K,  15% used [0x26aa0000, 0x26bd70c0, 0x26bd7200, 0x272a0000)
+    ro space 8192K,  66% used [0x2aaa0000, 0x2aff7960, 0x2aff7a00, 0x2b2a0000)
+    rw space 12288K,  46% used [0x2b2a0000, 0x2b8343a8, 0x2b834400, 0x2bea0000)
+
+Dynamic libraries:
+0x00400000 - 0x0040d000 	C:\jdk1.5.0\bin\javac.exe
+0x77f80000 - 0x77ffb000 	C:\WINNT\system32\ntdll.dll
+0x7c2d0000 - 0x7c332000 	C:\WINNT\system32\ADVAPI32.dll
+0x7c4e0000 - 0x7c599000 	C:\WINNT\system32\KERNEL32.DLL
+0x77d30000 - 0x77da1000 	C:\WINNT\system32\RPCRT4.DLL
+0x78000000 - 0x78045000 	C:\WINNT\system32\MSVCRT.dll
+0x6d640000 - 0x6d7c5000 	C:\jdk1.5.0\jre\bin\client\jvm.dll
+0x77e10000 - 0x77e75000 	C:\WINNT\system32\USER32.dll
+0x77f40000 - 0x77f7c000 	C:\WINNT\system32\GDI32.DLL
+0x77570000 - 0x775a0000 	C:\WINNT\system32\WINMM.dll
+0x6d280000 - 0x6d288000 	C:\jdk1.5.0\jre\bin\hpi.dll
+0x690a0000 - 0x690ab000 	C:\WINNT\system32\PSAPI.DLL
+0x6d610000 - 0x6d61c000 	C:\jdk1.5.0\jre\bin\verify.dll
+0x6d300000 - 0x6d31d000 	C:\jdk1.5.0\jre\bin\java.dll
+0x6d630000 - 0x6d63f000 	C:\jdk1.5.0\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dapplication.home=C:\jdk1.5.0 -Xms8m -Xss4m -ea:com.sun.tools...
+java_command: com.sun.tools.javac.Main -classpath C:\Project sachin;C:\jdk1.5.0\jre\lib\rt.jar;C:\jdk1.5.0\lib\dt.jar;C:\jdk1.5.0\lib\tools.jar;C:\jdk1.5.0\jre\lib\ext\dnsns.jar;C:\jdk1.5.0\jre\lib\ext\sunjce_provider.jar;C:\jdk1.5.0\jre\lib\ext\sunpkcs11.jar;C:\jdk1.5.0\jre\lib\ext\localedata.jar -d C:\Project sachin C:\Project sachin\seaop.java
+
+Environment Variables:
+PATH=C:\WINNT\system32;C:\WINNT;C:\WINNT\System32\Wbem;C:\Program Files\Rational\common;C:\PROGRA~1\COMMON~1\AUTODE~1;C:\Program Files\Common Files\Autodesk Shared\
+USERNAME=Administrator
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 15 Model 2 Stepping 7, GenuineIntel
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 2000 Build 2195 Service Pack 4
+
+CPU:total 1 family 15, cmov, cx8, fxsr, mmx, sse, sse2, ht
+
+Memory: 4k page, physical 121648k(18212k free), swap 459580k(239068k free)
+
+vm_info: Java HotSpot(TM) Client VM (1.5.0-b64) for windows-x86, built on Sep 15 2004 03:00:31 by "java_re" with MS VC++ 6.0
+

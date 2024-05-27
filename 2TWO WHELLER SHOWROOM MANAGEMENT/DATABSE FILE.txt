@@ -1,0 +1,19 @@
+
+
+
+create table Admin(A_No text,A_Name text,A_Addr text,A_Phno text,A_login text,A_Pass text);
+insert into admin values('3','Rajesh','Pune','9823782121','admin','password');
+
+
+                                                                                                                                  
+create table cust(custid integer,cname text,address text,age integer,telr text,telo text,telmo text,email text);
+
+
+CREATE TABLE EMPLOYEE(E-ID text primary key,E_NAME text,C_NO text,LAND text);
+
+CREATE TABLE CUST(CUSTOMER_NAME text primary key,ADDRESS text,CONTACT_NUMBER text,PAY_AMT int,BILL_NO int);
+
+
+
+create table employee(e_id serial primary key, e_name varchar(20), c_no int,land int);
+
